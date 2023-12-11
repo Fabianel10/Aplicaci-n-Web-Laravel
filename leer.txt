@@ -1,0 +1,88 @@
+CREAMOS TABLAS.
+
+Abrimos base de datos y creamos una con nombre laravel.
+Configuramos el framework.
+Creamos las migraciones, para empezar "proyectos" con: "php artisan make:migration proyectos"
+Realizamos una estructura adentro del método up.
+Utilizamos la extensión laravel snipet, y estructuramos la tabla "Schema::create-table".
+Creamos los campos, y enviamos todo a la base de datos con: "php artisan migrate".
+En resumen creamos la tabla, conectarnos a la base de datos y migrar todo. verificar en la bd, ahi vamos a ver toda la información que va a aparecer.
+
+CREAMOS LA AUTENTICACIÓN.
+
+Dentro vamos a crear la autenticación, donde vamos a alimentar todos los datos en la aplicación web. Por lo cual instalamos junto con Bootstrap:
+composer require laravel/ui + enter.
+
+Luego seguimos con: "php artisan ui bootstrap --auth"
+
+Ahora seguimos con "npm install && npm run dev"
+
+npm install
+npm run dev
+
+Una vez instalado todo, verificar las distribuciones, algunas dan muchos errores, fijarse las soluciones de la documentación oficial, terminado vamos a tener nuestro login y registro en
+bootstrap.
+
+CONFIGURAR DESARROLLO FRONT-END.
+
+Seguimos configurando y adaptando el desarrollo, copiamos nuestra carpetas a la carpeta public del proyecto principal.
+Luego creamos nuestro template, para eso nos vamos a la carpeta resources, luego views, luego layouts, y utilizamos el archivo "app.blade.php", lo copiamos en la misma carpeta y lo
+renombramos a "template.blade.php", ya que blade es el motor de plantillas de laravel.
+
+Copiamos index.html a la carpeta public y la abrimos. Por consiguiente copiamos la codificación de html a "template.blade.php", y abrimos "welcome.blade.php".
+
+Welcome.blade.php es la página principal de laravel, entonces borramos su contenido y:
+
+@extends('layouts.template') --> Incluimos al template de bootstrap.
+
+Verificamos la ruta de Css, e inspeccionamos la estructura del archivo, los elementos, las etiquetas, el header, el footer, etc.
+
+AGREGAR ÁREAS (YIELD Y SECTION).
+
+Con Yield se puede incrustar código e información y con section, es como un enlace a ese contenido, para pasar a "Yield". Realizamos un ejemplo y continuamos con el desarrollo.
+
+REALIZACIÓN DE CRUD.
+
+Para realizar cambios es necesario realizar un crud. Por ende, instalamos estos paquetes para generar un crud automáticamente para estructurar nuestros proyectos y áreas:
+
+"composer require ibex/crud-generator --dev"
+"php artisan vendor:publish --tag=crud  --> Para que podamos publicar.
+"php artisan make:crud proyectos" --> Generamos la instrucción para que se construya un crud de la tabla proyectos. Generando vista automáticamente.
+
+A continuación vamos a acceder a ese crud mediante las rutas. Por lo cual ingresamos a "web.php", insertamos un "Route::resource" cambiamos los parámetros establecidos. No olvidar,
+para ir a los controladores, tenemos que ir a la carpeta app, luego Controllers, y luego "ProyectoController.php". Guardamos y accedemos a Proyectos.
+Verificamos que el crud funciona bien, que se pueda seleccionar, actualiza, editar y borrar.
+
+MOSTRANDO DATOS DE PROYECTOS.
+
+Agregamos datos a nuestro crud de la base de datos, a nuestra tabla de registros de proyectos, 5 mínimo. Por consiguiente vamos a necesitar un controlador que agarre toda la información
+de los proyectos y pase todo directamente a nuestro desarrollo FRONT-END.
+Entonces vamos a la terminal e instalamos:
+
+"php artisan make:controller DesarrollosController"
+
+Continuando, abrimos el controlador creado recientemente. Pasamos el modelo sino no va a encontrar los datos, ademas de diferentes codificaciones para su utilización y especificación.
+
+MOSTRANDO DATOS EN EL DESARROLLO FRONT-END.
+
+Una vez que tenemos la info en "welcome.blade.php", trabajamos con "index.blade.php".
+Ya muestra la información de los controladores, despliega los datos, faltaría que desde las rutas mostremos el controlador. Por ende, abrimos web.php, cambiamos los datos que corresponden
+para un mejor enlazado, codificamos las vistas relacionadas. Verificamos que se muestren los datos, mas allá de que no tengan forma.
+
+AJUSTANDO DISEÑO DEL FRONT-END.
+
+Una vez verificado que funciona, vamos a adecuarlo, ya que hay detalles gráficos que quedan por resolver. Nos vamos a los templates en vistas/layouts, template.blade.php y unificamos
+codificaciones con "welcome.blade.php" borramos y estructuramos el diseño con una mejor performance.
+
+AJUSTANDO MODALES HTML.
+
+En consiguiente, restaría ajustar los modales para que abra cada ventana especifica para cada proyecto. Entonces utilizamos "proyecto->image", para agregar en portfoliomodal --> proyecto
+-->id, este va a ser un identificador, es un elemento dinámico, único, ya que cada una de las imágenes va a tener su propio modal y específicamente se va a ver su contenido.
+
+AJUSTES FINALES (BLOQUEO DE ACCESO).
+
+Hacemos el bloqueo de acceso con un login, para logearnos, primero nos registramos, y ya tenemos acceso, luego vamos a bloquear el acceso, para eso verificamos los controladores,
+específicamente "Homecontroller.php" y "ProyectoController", en este último bloqueamos acceso.
+
+Para dejar un enlace en registros de Proyectos nos dirigimos a resources, views (vistas), layouts y a "app.blade.php", accedemos a las rutas correspondientes,
+
